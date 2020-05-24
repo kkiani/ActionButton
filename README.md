@@ -1,7 +1,8 @@
 # ActionButton
-
-## Package Description
 custom class from UIButton which open a UIAlertController with sheetStyle act like combo box.
+
+## Intallation Options
+-   Swift Package Manager
 
 ## ⚠️ Attention
 do not use for large number of options.
