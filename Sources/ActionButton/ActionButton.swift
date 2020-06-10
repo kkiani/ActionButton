@@ -8,6 +8,7 @@ open class ActionButton: UIButton{
         }
     }
     public var delegate: ActionButtonDelegate?
+    public var selectedIndex: Int?
     private var actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     
     override public init(frame: CGRect) {
@@ -30,10 +31,15 @@ open class ActionButton: UIButton{
         
         // add actions from dataSource
         for (index, item) in dataSource.enumerated(){
-            actionController.addAction(UIAlertAction(title: item, style: .default, handler: { [weak self] (_) in
+            let action = UIAlertAction(title: item, style: .default, handler: { [weak self] (_) in
                 guard let self = self else{return}
                 self.delegate?.actionButton(self, didSelectRow: index)
-            }))
+            })
+            
+            if selectedIndex == index{            
+                action.setValue(true, forKey: "checked")
+                actionController.addAction(action)
+            }
         }
         
         // add cancel button
