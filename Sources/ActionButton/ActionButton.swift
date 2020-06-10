@@ -40,6 +40,8 @@ open class ActionButton: UIButton{
                 action.setValue(true, forKey: "checked")
                 actionController.addAction(action)
             }
+            
+            actionController.addAction(action)
         }
         
         // add cancel button
